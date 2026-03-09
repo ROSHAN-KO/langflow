@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  langflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: langflow_optima_dev # CHANGED: No conflict with original container
+    ports:
+      - "8008:7860" # CHANGED: Your new port
+    volumes:
+      - ko_optima_dev_data:/root/.cache/langflow # CHANGED: Completely separate database!
+      - ./data:/app/data
+    environment:
+      - LANGFLOW_AUTO_LOGIN=True
+      - LANGFLOW_SUPERUSER=koadmin
+      - LANGFLOW_SUPERUSER_PASSWORD=FsUqeE#77Xq8
+    restart: unless-stopped
+
+volumes:
+  ko_optima_dev_data: # CHANGED: Matches the new volume name above
