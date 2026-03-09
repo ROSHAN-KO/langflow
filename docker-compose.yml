@@ -12,7 +12,7 @@ services:
       - ko_optima_dev_data:/root/.cache/langflow # CHANGED: Completely separate database!
       - ./data:/app/data
     environment:
-      - LANGFLOW_AUTO_LOGIN=True
+      - LANGFLOW_AUTO_LOGIN=False
       - LANGFLOW_SUPERUSER=koadmin
       - LANGFLOW_SUPERUSER_PASSWORD=FsUqeE#77Xq8
     restart: unless-stopped
